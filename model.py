@@ -7,6 +7,7 @@
 #you'll probably want to just go ahead and ask for help :D
 
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -37,7 +38,7 @@ class User(db.Model):
     #added nullable variables, if issues arise, come here first! :)
     #took them away! you did indeed run into issue, as expected!
 
-    ratings =[]
+    
 
     def __repr__(self):
         return f'<User user_id={self.user_id} email={self.email}>'
@@ -55,7 +56,7 @@ class Movie(db.Model):
     release_date = db.Column(db.DateTime)
     poster_path = db.Column(db.String)
 
-    ratings =[]
+    
 
     def __repr__(self):
         return f'<Movie movie_id={self.movie_id} title={self.title}>'
@@ -63,7 +64,7 @@ class Movie(db.Model):
 class Ratings(db.Model):
     """A movie rating."""
 
-    __tablename__ = 'rating'
+    __tablename__ = 'ratings'
 
     rating_id = db.Column(db.Integer,
                         autoincrement=True,
@@ -77,7 +78,7 @@ class Ratings(db.Model):
     
 
     def __repr__(self):
-        return f'<Rating rating_id={self.rating_id} score={self.score}>'
+        return f'<Ratings rating_id={self.rating_id} score={self.score}>'
 
 
 if __name__ == '__main__':
