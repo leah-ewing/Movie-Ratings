@@ -1,6 +1,6 @@
 """Server for movie ratings app."""
 
-from flask import (Flaskrender_template, request, flash, session,
+from flask import (Flask,render_template, request, flash, session,
                    redirect)
 from model import connect_to_db
 import crud
@@ -15,8 +15,28 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 def homepage():
     """Display the homepage."""
-    
+
     return render_template('homepage.html')
+
+
+@app.route('/movies')
+def all_movies():
+    """View all movies."""
+
+    movies = crud.get_movies()
+
+    return render_template('all_movies.html', movies=movies)
+
+
+@app.route('/movies/<movie_id>')
+def movie():
+    """View all movie details."""
+
+    movies = crud.movie_details()
+
+    return render_template('movie_details.html', movies=movies)
+
+
 
 if __name__ == '__main__':
     connect_to_db(app)

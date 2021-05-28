@@ -13,7 +13,8 @@ def create_user(email, password):
     db.session.commit()
 
     return user
-    
+
+  
 
 def create_movie(title, overview, release_date, poster_path):
     """Create and return a new movie."""
@@ -28,6 +29,12 @@ def create_movie(title, overview, release_date, poster_path):
 
     return movie
 
+def get_movies():
+    """Create and return a new movie."""
+
+    return Movie.query.all()
+    #your links aren't showing up! but you're at step "Your task" PT 3
+    #"view list of all movies"
 
 def create_rating(user, movie, score):
     """Create and return a new rating."""
