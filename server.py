@@ -29,10 +29,10 @@ def all_movies():
 
 
 @app.route('/movies/<movie_id>')
-def movie():
+def movie(movie_id):
     """View all movie details."""
 
-    movies = crud.movie_details()
+    #movies = crud.movie_details()
 
     return render_template('movie_details.html', movies=movies)
 
